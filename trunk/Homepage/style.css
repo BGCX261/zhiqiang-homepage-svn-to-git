@@ -1,0 +1,40 @@
+html, body{margin:0; padding:0}
+html{height:100%; min-height:100%; border:0}
+body{min-height:100%; font-family:Georgia,"Times New Roman",Times,serif; font-size:11px}
+
+#header{position:fixed; top:0; left:0; height:20px; width:100%; border-bottom:solid 1px #6E89DD; background-color:#8EA5EC; TEXT-ALIGN:center; overflow:visible}
+
+#footer{position:fixed; bottom:0px; height:20px; width:100%; border-top:solid 1px #6E89DD; background-color:#8EA5EC; TEXT-ALIGN:center}
+
+#nav, #content, .links{width:785px; text-align:left; margin-left:auto; margin-right:auto}
+#content{background-color:#fff; color:#4A78B3; background-image:url('../images/banner.jpg'); background-repeat:no-repeat; background-position:top left; border-bottom:solid 1px #4A78B3}
+
+.entry{color:#0A2833; padding:35px 0 0 260px; font-size:10pt; font-weight:bold; min-height:220px}
+
+a, 
+a:link, 
+a:visited, 
+a:active, 
+a:hover{text-decoration:none; color:#324290}
+
+a:hover{color:#6F85F0}
+
+.links{padding:20px 0}
+
+.links a, 
+.links a:link, 
+.links a:visited, 
+.links a:hover{color:#000; text-decoration:none}
+
+.icon{margin-right:25px; display:-moz-inline-box; display:inline-block; width:70px; height:15px; background-repeat:no-repeat; background-position:50% 0%; text-align:center; padding-top:70px;   padding-bottom:5px; cursor:hand;   margin:0 20px 5px 0}
+
+.icon span{  display:block;   width:70px; text-align:center}
+
+#blog{background-image:url(/images/blog.png)}
+#contact{background-image:url(/images/contact.png)}
+#research{background-image:url(/images/research.png)}
+#reading{background-image:url(/images/reading.png)}
+#feed{background-image:url(/images/feed.png)}
+#photo{background-image:url(/images/photo.png)}
+#activity{background-image:url(/images/activity.png)}
+#personal{background-image:url(/images/personal.png)}

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<TITLE>something</TITLE>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<style>
+	.entry{width:346px; height:147px; float:left; overflow:hidden;}
+	.entry img{width:100px; height:147px; border:none; float:left;}
+</style>
+<script type="text/javascript" src="/api.js"></script>
+<script type="text/javascript" src="/api-parser.js"></script>
+
+</HEAD>
+<BODY>
+
+<script>
+function _$(s) {document.write(s);}
+var lists;
+DOUBAN.apikey = "7576f60543a81cf56064e20fcaf856df";
+DOUBAN.getUserCollection({
+    uid:'mathzqy',
+	cat:'book',
+	status:'wish',
+	maxresults: '100',
+    callback:function(re){
+        lists = DOUBAN.parseMultiCollection(re);
+		_$("<h2>列表</h2>");
+		for (var entry in lists.entry) {
+			var subject = entry.subject;
+			_$("<div class='entry'>");
+			_$("	<img src='" + subject.link.image + "' alt='"+ subject.title + "'/>");
+			_$("	<h4><a href='"+subject.link.alternate+"'>" + subject.title + "</a>");
+			_$("	<p>");		
+			_$("		<span>作者: " + subject.author.name + "</span><br/>");
+			_$("		<span>出版社: " + subject.attribute.publisher[0]+ "</span><br/>");
+			_$("		<span>出版日期: " + subject.attribute.pubdate[0]+ "</span><br/>");
+			_$("		<span>原价: " + subject.attribute.price[0] + "</span><br/>");
+			_$("	</p>");
+			_$("</div>");
+		}
+
+    }
+})
+</script>
+</BODY>
+</HTML>

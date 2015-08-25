@@ -1,0 +1,59 @@
+function path = BrownMotionPath(t, para, pathNumber)
+% 布朗运动路径模拟;几何布朗运动路径模拟;关于布朗运动的随机积分模拟
+
+%产生布朗运动路径,时间区间(0,1)
+
+if nargin < 3
+    pathNumber=1;
+elseif nargin < 2
+	para = [0, 1];
+elseif nargin < 1
+    t = [1, 0.01];
+end
+
+if length(para) == 1
+    para = [0, para];
+end
+if length(t) == 1
+    t = [t, 0.01];
+end
+
+pointNumber = cell(t(1) / t(2));
+path = zeros(pathNumber, pointNumber);
+for i = 1 : pathNumber
+    path(i, 1) = para(1);
+    for j = 2 : pointNumber + 1
+        
+        path(i+1,j)= brown_motion_values(i,j)+sqrt(delt_t)*normrnd(0,1,1);
+        % 从0位置出发的布朗运动
+    end
+end
+
+%产生布朗运动路径,时间区间(0,100)
+%产生几何布朗运动路径d(log(s))=mu*s*d(t)+sigma*s*d(w),w表示布朗运动
+% price_stock() :
+mu=0.05;
+sigma=1;
+dt=1/1000;
+n_path=10;
+n_points=1001;
+price_stock=zeros(n_points,n_path);
+for j=1:n_path
+    price_stock(1,j)=1; %目前的股票价格为1
+end
+for j=1:n_path
+    for i=1:n_points-1
+        price_stock(i+1,j)=price_stock(i,j)*exp(dt*(mu-0.5*sigma^2)+sigma*sqrt(dt)*normrnd(0,1,1));
+    end
+end
+x=(0:0.001:1)';
+subplot(2,1,1);
+plot(x,brown_motion_values);
+xlabel('t')
+ylabel('y_value')
+title('布朗运动路径')
+subplot(2,1,2);
+plot(x, price_stock);
+xlabel('t')
+ylabel('y_value')
+title('几何布朗运动路径')
